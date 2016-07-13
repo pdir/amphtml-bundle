@@ -5,7 +5,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git@github.com:pdir/amphtml-bundle.git"
+    "url": "https://github.com/pdir/amphtml-bundle.git"
   },
   "keywords": [
     "Contao",

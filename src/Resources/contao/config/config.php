@@ -2,7 +2,8 @@
 /**
  * Back end modules
  */
-$GLOBALS['BE_MOD']['amphtml'] = array(
+
+$GLOBALS['BE_MOD']['content'] = array(
     'amphtml' => array
     (
         'tables'      => array('tl_amphtml'),
