@@ -1,0 +1,3 @@
+services:
+    kernel_bundle:
+        class: Pdir\AmphtmlBundle\PdirAmphtmlBundle
