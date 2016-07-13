@@ -1,0 +1,22 @@
+{
+  "name": "pdir/amphtml-bundle",
+  "version": "0.1.0",
+  "description": "Amphtml Bundle for Contao 4",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pdir/amphtml-bundle.git"
+  },
+  "keywords": [
+    "Contao",
+    "amphtml",
+    "instant",
+    "pagespeed",
+    "amp"
+  ],
+  "author": "pdir / digital agentur",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/pdir/amphtml-bubdle/issues"
+  }
+}

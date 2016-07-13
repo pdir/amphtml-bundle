@@ -1,0 +1,26 @@
+{
+  "name": "pdir/amphtml-bundle",
+  "type": "library",
+  "description": "Amphtml Bundle for Contao 4",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "pdir / digital agentur",
+      "homepage": "https://pdir.de"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "contao/core-bundle": "~4.0"
+  },
+  "conflict": {
+    "contao/core": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pdir\\AmphtmlBundle\\": "src/"
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
+}
