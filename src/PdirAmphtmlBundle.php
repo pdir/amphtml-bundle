@@ -17,6 +17,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author Mathias Arzberger <develop@pdir.de>
  */
 
-class PdirAmphtmlBundle extends Bundle {
-
+class PdirAmphtmlBundle extends Bundle
+{
 }
