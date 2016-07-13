@@ -6,9 +6,16 @@
   "authors": [
     {
       "name": "Webdesign für Dresden",
-      "homepage": "https://pdir.de"
+      "homepage": "https://pdir.de",
+      "email" : "develop@pdir.de",
+      "role" : "Developer"
     }
   ],
+  "support" : {
+    "email" : "develop@pdir.de",
+    "issues" : "https://github.com/pdir/amphtml-bundle/issues",
+    "source" : "https://github.com/pdir/amphtml-bundle"
+  },
   "require": {
     "php": ">=5.4.0",
     "contao/core-bundle": "~4.0"
