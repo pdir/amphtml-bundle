@@ -30,9 +30,5 @@ class AmphtmlHooks extends \Controller
             //print_r("<div style='background:#fff'>".$objLayout->template."</div>");
         }
 
-
-        //$this->strTemplate = 'mod_reference_list';
-        //$this->Template = new FrontendTemplate($this->strRefTemplate);
-
     }
 }
