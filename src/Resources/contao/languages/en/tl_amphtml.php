@@ -1,4 +1,3 @@
-
 <?php
 $GLOBALS['TL_LANG']['tl_amphtml']['title_legend'] = array('test');
 $GLOBALS['TL_LANG']['tl_amphtml']['title'] = array('title');
