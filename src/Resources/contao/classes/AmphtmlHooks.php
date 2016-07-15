@@ -22,12 +22,23 @@ class AmphtmlHooks extends \Controller
      */
     public function getPageLayout(\PageModel $objPage, \LayoutModel $objLayout, \PageRegular $objPageRegular)
     {
-        //$path = $_SERVER['REQUEST_URI'];
-        //print_r("<div style='background:#fff'>".$path."</div>");
         if(isset($_GET['amp'])) {
-            //print_r("<div style='background:#fff'>AMP HTML Parameter übergeben</div>");
+
             $objLayout->template = "fe_page_amphtml";
-            //print_r("<div style='background:#fff'>".$objLayout->template."</div>");
+            $objLayout->templates = "templates/amphtml";
+            //$objLayout->templates = "templates/amphtml";
+
+            //$objLayout->pid->templates = "templates/amphtml";
+            print_r($objLayout);
+
+            //inline css
+            echo "http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml_custom.css";
+            if(file_exists("../files/amphtml/amphtml_custom.css")) {
+                $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml_custom.css");
+            } else {
+                $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
+            }
+            $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
         }
 
     }
