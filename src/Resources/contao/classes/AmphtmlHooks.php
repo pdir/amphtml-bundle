@@ -18,31 +18,25 @@ namespace Pdir;
 class AmphtmlHooks extends \Controller
 {
     /*
-     * if amp is set, load the new fe_page template
+     * if amp is set, load the given layout from page root
      */
-    public function getPageLayout(&$objPage, &$objLayout, $objPageRegular)
+    public function getPageLayout($objPage, &$objLayout, $objPageRegular)
     {
         if(isset($_GET['amp'])) {
 
             $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
             $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
 
-           /* $objLayout = \LayoutModel::findById(7);
-            $objPage = \PageModel::findByLayout(5);
+            $objLayout = \LayoutModel::findById($ampLayout);
 
-            //$objPage->template = ($objLayout->template != '') ? $objLayout->template : 'fe_page_amphtml';
-            //$objPage->templateGroup = $objLayout->templates;
-
-            //$objPage->layout = 5;
-           */
-
-            //inline css
+            // load inline css from file or use user custom
             if(file_exists("../files/amphtml/amphtml_custom.css")) {
                 $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml_custom.css");
             } else {
                 $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
             }
             $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
+
         }
 
     }
