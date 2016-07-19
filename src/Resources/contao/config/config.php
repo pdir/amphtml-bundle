@@ -11,7 +11,8 @@
     )
 );*/
 
-$GLOBALS['TL_HOOKS']['getPageLayout'][] = array('\Pdir\AmphtmlHooks', 'getPageLayout');
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = array('\Pdir\AmphtmlHooks', 'ampGetPageLayout');
+$GLOBALS['TL_HOOKS']['generateFrontendUrl'][] = array('\Pdir\AmphtmlHooks', 'ampGenerateFrontendUrl');
 
 $count = count($GLOBALS['BE_MOD']['content']);
 array_insert($GLOBALS['BE_MOD']['content'],$count, [

@@ -10,9 +10,17 @@
 namespace Pdir;
 
 /**
+ * Amphtml for Contao Open Source CMS
+ *
+ * Copyright (C) 2016 pdir / digital agentur
+ *
+ * @package    amphtml
+ * @link       https://github.com/pdir/amphtml-bundle
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
+ * @author Philipp Seibt <seibt@pdir.de>
+ *
  * Configures the Amphtml hooks.
  *
- * @author Philipp Seibt <seibt@pdir.de>
  */
 
 class AmphtmlHooks extends \Controller
@@ -20,8 +28,14 @@ class AmphtmlHooks extends \Controller
     /*
      * if amp is set, load the given layout from page root
      */
-    public function getPageLayout($objPage, &$objLayout, $objPageRegular)
+    public function ampGetPageLayout($objPage, &$objLayout, $objPageRegular)
     {
+        $amphtml = (int) \PageModel::findByPk($objPage->rootId)->amphtml;
+        if ($amphtml && ($page = \PageModel::findByPk($objPage->id)) !== null) {
+            $strUrl = \Controller::generateFrontendUrl($page->row());
+            $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
+        }
+
         if(isset($_GET['amp'])) {
 
             $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
@@ -36,8 +50,19 @@ class AmphtmlHooks extends \Controller
                 $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
             }
             $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
+            $objLayout->head .= '<link rel="canonical" href="'.$strUrl.'" />';
 
         }
 
+    }
+    /*
+     * if amp is set, add amp param to all urls
+     */
+    public function ampGenerateFrontendUrl($arrRow, $strParams, $strUrl)
+    {
+        if(isset($_GET['amp'])) {
+            return $strUrl = $strUrl . '?amp';
+        }
+        return $strUrl;
     }
 }
