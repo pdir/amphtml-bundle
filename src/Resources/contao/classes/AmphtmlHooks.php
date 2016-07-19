@@ -24,6 +24,9 @@ class AmphtmlHooks extends \Controller
     {
         if(isset($_GET['amp'])) {
 
+            $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
+            $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
+
            /* $objLayout = \LayoutModel::findById(7);
             $objPage = \PageModel::findByLayout(5);
 
@@ -31,8 +34,6 @@ class AmphtmlHooks extends \Controller
             //$objPage->templateGroup = $objLayout->templates;
 
             //$objPage->layout = 5;
-            echo "<pre>"; print_r($objPage); echo "</pre>";
-            echo "<pre>"; print_r($objLayout); echo "</pre>";
            */
 
             //inline css
