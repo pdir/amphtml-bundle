@@ -42,19 +42,19 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['ampLayout'] = array
     'inputType'               => 'select',
     'foreignKey'              => 'tl_layout.name',
     'options_callback'        => array('tl_page', 'getPageLayouts'),
-    'eval'                    => array('chosen'=>true, 'tl_class'=>'w50'),
+    'eval'                    => array('chosen'=>true),
     'sql'                     => "int(10) unsigned NOT NULL default '0'",
     'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['ampUseInLayout'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['ampUseInLayout'],
+    'label'                   => &$GLOBALS['TL_LANG']['tl_page']['ampUseInLayout'],
     'default'                 => array('head', 'footer'),
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'options'                 => array('head', 'footer', 'left', 'right'),
-    'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+    'reference'               => &$GLOBALS['TL_LANG']['tl_page'],
     'eval'                    => array('multiple'=>true),
     'sql'                     => "varchar(255) NOT NULL default ''"
 );

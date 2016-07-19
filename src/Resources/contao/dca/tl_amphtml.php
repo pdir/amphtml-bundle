@@ -1,4 +1,4 @@
-<?php
+q<?php
 /**
  * Table tl_amphtml
  */
