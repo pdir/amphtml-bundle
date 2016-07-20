@@ -1,7 +1,8 @@
 {
   "name": "pdir/amphtml-bundle",
-  "type": "library",
+  "type":"contao-bundle",
   "description": "Amphtml Bundle for Contao 4",
+  "keywords":["contao","google","amphtml", "speed","template"],
   "license": "LGPL-3.0+",
   "authors": [
     {
@@ -18,7 +19,7 @@
   },
   "require": {
     "php": ">=5.4.0",
-    "contao/core-bundle": "~4.0"
+    "contao/core-bundle": "^4.0"
   },
   "conflict": {
     "contao/core": "*"
@@ -26,11 +27,17 @@
   "autoload": {
     "psr-4": {
       "Pdir\\AmphtmlBundle\\": "src/"
-    }
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
+  },
+  "extra": {
+    "contao-manager-plugin": "Pdir\\AmphtmlBundle\\ContaoManagerPlugin"
   },
   "config": {
     "files": "files"
   },
   "prefer-stable": true,
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
 }
