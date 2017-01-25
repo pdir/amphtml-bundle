@@ -34,7 +34,6 @@ class AmphtmlHooks extends \Controller
         if($amphtml == 1) {
             if ($amphtml && ($page = \PageModel::findByPk($objPage->id)) !== null) {
                 $strUrl = \Controller::generateFrontendUrl($page->row());
-                echo "<br><br><pre>"; print_r($page->row()); echo "</pre>";
                 $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
             }
 
@@ -42,6 +41,7 @@ class AmphtmlHooks extends \Controller
                 $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
                 $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
                 $objLayout = \LayoutModel::findById($ampLayout);
+                echo "<br><br><br><pre>"; print_r($GLOBALS['TL_FRAMEWORK_CSS']); echo "</pre>";
 
                 // enable or disable columns in layout
                 $desMod = deserialize($objLayout->modules);
