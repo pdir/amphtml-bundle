@@ -35,8 +35,9 @@ class AmphtmlHooks extends \Controller
     {
         $amphtml = (int) \PageModel::findByPk($objPage->rootId)->amphtml;
         if($amphtml == 1) {
-            if ($amphtml && ($page = \PageModel::findByPk($objPage->id)) !== null) {
-                $strUrl = \Controller::generateFrontendUrl($page->row());
+            $page = \PageModel::findByPk($objPage->id);
+            $strUrl = \Controller::generateFrontendUrl($page->row());
+            if ($amphtml && $page !== null) {
                 $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
             }
 
@@ -77,7 +78,7 @@ class AmphtmlHooks extends \Controller
                     $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
                 }
                 $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
-                $objLayout->head .= '<link rel="canonical" href="'.$strUrl.'" />';
+                $objLayout->head .= '<link rel="canonical" href="'.str_replace('?amp', '', $strUrl).'" />';
             }
         }
     }
@@ -98,8 +99,12 @@ class AmphtmlHooks extends \Controller
      */
     public function unbindDynamicScriptTags($strBuffer)
     {
-        if(isset($_GET['amp']))
-            return '';
+        if(isset($_GET['amp'])) {
+            $search  = array('[[TL_HEAD]]', '[[TL_CSS]]');
+            $replace = array('', '');
+            return str_replace($search, $replace, $strBuffer);
+            // return ' ';
+        }
 
         return $strBuffer;
     }
