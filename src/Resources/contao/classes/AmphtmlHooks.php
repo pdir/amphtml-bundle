@@ -89,4 +89,33 @@ class AmphtmlHooks extends \Controller
         }
         return $strUrl;
     }
+
+    /**
+     * @param string $strBuffer
+     * @return string
+     */
+    public function unbindDynamicScriptTags($strBuffer)
+    {
+        echo "<pre>";
+        echo "<br>TL_FRAMEWORK_CSS";
+        var_dump($GLOBALS['TL_FRAMEWORK_CSS']);
+        echo "<br>TL_CSS";
+        var_dump($GLOBALS['TL_CSS']);
+        echo "<br>TL_USER_CSS";
+        var_dump($GLOBALS['TL_USER_CSS']);
+        echo "<br>TL_HEAD";
+        var_dump($GLOBALS['TL_HEAD']);
+        echo "<br>TL_BODY";
+        var_dump($GLOBALS['TL_BODY']);
+        echo "<br>TL_JAVASCRIPT";
+        var_dump($GLOBALS['TL_JAVASCRIPT']);
+        echo "<br>TL_JQUERY";
+        var_dump($GLOBALS['TL_JQUERY']);
+        echo "<br>TL_MOOTOOLS";
+        var_dump($GLOBALS['TL_MOOTOOLS']);
+        // echo "<br>Buffer"; var_dump($strBuffer);
+        echo "</pre>";
+
+        // return $strBuffer;
+    }
 }
