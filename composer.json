@@ -28,6 +28,9 @@
       "Pdir\\AmphtmlBundle\\": "src/"
     }
   },
+  "config": {
+    "files": "files"
+  },
   "prefer-stable": true,
   "minimum-stability": "dev"
 }
