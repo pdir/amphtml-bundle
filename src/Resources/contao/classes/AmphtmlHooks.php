@@ -99,7 +99,7 @@ class AmphtmlHooks extends \Controller
      */
     public function unbindDynamicScriptTags($strBuffer)
     {
-        echo "<pre>";
+        /*echo "<pre>";
         echo "<br>TL_FRAMEWORK_CSS";
         var_dump($GLOBALS['TL_FRAMEWORK_CSS']);
         echo "<br>TL_CSS";
@@ -117,7 +117,7 @@ class AmphtmlHooks extends \Controller
         echo "<br>TL_MOOTOOLS";
         var_dump($GLOBALS['TL_MOOTOOLS']);
         // echo "<br>Buffer"; var_dump($strBuffer);
-        echo "</pre>";
+        echo "</pre>";*/
 
         // return $strBuffer;
     }
