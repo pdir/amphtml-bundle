@@ -15,9 +15,9 @@ $GLOBALS['TL_HOOKS']['getPageLayout'][] = array('\Pdir\AmphtmlHooks', 'ampGetPag
 $GLOBALS['TL_HOOKS']['generateFrontendUrl'][] = array('\Pdir\AmphtmlHooks', 'ampGenerateFrontendUrl');
 $GLOBALS['TL_HOOKS']['replaceDynamicScriptTags'][] = array('\Pdir\AmphtmlHooks', 'unbindDynamicScriptTags');
 
-$count = count($GLOBALS['BE_MOD']['content']);
+/*$count = count($GLOBALS['BE_MOD']['content']);
 array_insert($GLOBALS['BE_MOD']['content'],$count, [
     'AMP HTML' => [
         'tables' => ['tl_amphtml']
     ]
-]);
+]);*/
