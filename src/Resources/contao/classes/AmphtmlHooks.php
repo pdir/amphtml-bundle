@@ -43,7 +43,7 @@ class AmphtmlHooks extends \Controller
                 $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
             }
 
-            if(\Input::get('amp') !== null)
+            if(isset($_GET['amp']))
             {
                 $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
                 $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
@@ -107,7 +107,7 @@ class AmphtmlHooks extends \Controller
      */
     public function ampGenerateFrontendUrl($arrRow, $strParams, $strUrl)
     {
-        if(\Input::get('amp') !== null)
+        if(isset($_GET['amp']))
         {
             return $strUrl = $strUrl . '?amp';
         }
@@ -120,12 +120,11 @@ class AmphtmlHooks extends \Controller
      */
     public function unbindDynamicScriptTags($strBuffer)
     {
-        if(\Input::get('amp') !== null)
+        if(isset($_GET['amp']))
         {
             $search  = array('[[TL_HEAD]]', '[[TL_CSS]]');
             $replace = array('', '');
             return str_replace($search, $replace, $strBuffer);
-            // return ' ';
         }
 
         return $strBuffer;
