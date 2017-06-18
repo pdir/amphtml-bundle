@@ -39,5 +39,5 @@
     "files": "files"
   },
   "prefer-stable": true,
-  "minimum-stability": "dev",
+  "minimum-stability": "dev"
 }
