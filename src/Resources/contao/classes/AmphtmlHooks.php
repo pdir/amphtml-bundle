@@ -1,14 +1,5 @@
 <?php
 
-/*
- * Copyright pdir / digital agentur <develop@pdir.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Pdir;
-
 /**
  * Amphtml for Contao Open Source CMS
  *
@@ -25,6 +16,8 @@ namespace Pdir;
  * Configures the Amphtml hooks.
  *
  */
+
+namespace Pdir;
 
 class AmphtmlHooks extends \Controller
 {
