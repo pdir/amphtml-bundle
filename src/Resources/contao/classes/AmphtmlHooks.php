@@ -34,47 +34,66 @@ class AmphtmlHooks extends \Controller
     public function ampGetPageLayout($objPage, &$objLayout, $objPty)
     {
         $amphtml = (int) \PageModel::findByPk($objPage->rootId)->amphtml;
-        if($amphtml == 1) {
+        if($amphtml == 1)
+        {
             $page = \PageModel::findByPk($objPage->id);
             $strUrl = \Controller::generateFrontendUrl($page->row());
-            if ($amphtml && $page !== null) {
+            if ($amphtml && $page !== null)
+            {
                 $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
             }
 
-            if(isset($_GET['amp'])) {
+            if(\Input::get('amp') !== null)
+            {
                 $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
                 $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
                 $objLayout = \LayoutModel::findById($ampLayout);
 
                 // enable or disable columns in layout
                 $desMod = deserialize($objLayout->modules);
-                for($i = 0; $i <= count($desMod); $i++) {
-                    if( stristr($ampUseInLayout,"head") && $desMod[$i]['col'] == "header" ) {
+                for($i = 0; $i <= count($desMod); $i++)
+                {
+                    if( stristr($ampUseInLayout,"head") && $desMod[$i]['col'] == "header" )
+                    {
                         $desMod[$i]['enable'] = '1';
-                    } else if( !stristr($ampUseInLayout,"head") && $desMod[$i]['col'] == "header" ) {
+                    }
+                    else if( !stristr($ampUseInLayout,"head") && $desMod[$i]['col'] == "header" )
+                    {
                         $desMod[$i]['enable'] = '0';
                     }
-                    if( stristr($ampUseInLayout,"footer") && $desMod[$i]['col'] == "footer" ) {
+                    if( stristr($ampUseInLayout,"footer") && $desMod[$i]['col'] == "footer" )
+                    {
                         $desMod[$i]['enable'] = '1';
-                    } else if( !stristr($ampUseInLayout,"footer") && $desMod[$i]['col'] == "footer" ) {
+                    }
+                    else if( !stristr($ampUseInLayout,"footer") && $desMod[$i]['col'] == "footer" )
+                    {
                         $desMod[$i]['enable'] = '0';
                     }
-                    if( stristr($ampUseInLayout,"left") && $desMod[$i]['col'] == "left" ) {
+                    if( stristr($ampUseInLayout,"left") && $desMod[$i]['col'] == "left" )
+                    {
                         $desMod[$i]['enable'] = '1';
-                    } else if( !stristr($ampUseInLayout,"left") && $desMod[$i]['col'] == "left" ) {
+                    }
+                    else if( !stristr($ampUseInLayout,"left") && $desMod[$i]['col'] == "left" )
+                    {
                         $desMod[$i]['enable'] = '0';
                     }
-                    if( stristr($ampUseInLayout,"right") && $desMod[$i]['col'] == "right" ) {
+                    if( stristr($ampUseInLayout,"right") && $desMod[$i]['col'] == "right" )
+                    {
                         $desMod[$i]['enable'] = '1';
-                    } else if( !stristr($ampUseInLayout,"right") && $desMod[$i]['col'] == "right" ) {
+                    }
+                    else if( !stristr($ampUseInLayout,"right") && $desMod[$i]['col'] == "right" )
+                    {
                         $desMod[$i]['enable'] = '0';
                     }
                 } $objLayout->modules = serialize($desMod);
 
                 // load inline css from file or use user custom
-                if(file_exists("../files/amphtml/amphtml_custom.css")) {
+                if(file_exists("../files/amphtml/amphtml_custom.css"))
+                {
                     $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml_custom.css");
-                } else {
+                }
+                else
+                {
                     $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
                 }
                 $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
@@ -82,12 +101,14 @@ class AmphtmlHooks extends \Controller
             }
         }
     }
+
     /*
      * if amp is set, add amp param to all urls
      */
     public function ampGenerateFrontendUrl($arrRow, $strParams, $strUrl)
     {
-        if(isset($_GET['amp'])) {
+        if(\Input::get('amp') !== null)
+        {
             return $strUrl = $strUrl . '?amp';
         }
         return $strUrl;
@@ -99,7 +120,8 @@ class AmphtmlHooks extends \Controller
      */
     public function unbindDynamicScriptTags($strBuffer)
     {
-        if(isset($_GET['amp'])) {
+        if(\Input::get('amp') !== null)
+        {
             $search  = array('[[TL_HEAD]]', '[[TL_CSS]]');
             $replace = array('', '');
             return str_replace($search, $replace, $strBuffer);
