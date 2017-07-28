@@ -1,6 +1,10 @@
 Amphtml for Contao 4
 ======================
 
+[![Latest Stable Version](https://poser.pugx.org/pdir/amphtml-bundle/v/stable)](https://packagist.org/packages/pdir/amphtml-bundle)
+[![Total Downloads](https://poser.pugx.org/pdir/amphtml-bundle/downloads)](https://packagist.org/packages/pdir/amphtml-bundle)
+[![License](https://poser.pugx.org/pdir/amphtml-bundle/license)](https://packagist.org/packages/pdir/amphtml-bundle)
+
 About
 -----
 
