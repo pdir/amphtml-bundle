@@ -30,13 +30,14 @@ class AmphtmlHooks extends \Controller
         if($amphtml == 1)
         {
             $page = \PageModel::findByPk($objPage->id);
+            $domain = \Environment::get('url');
             $strUrl = \Controller::generateFrontendUrl($page->row());
             if ($amphtml && $page !== null)
             {
-                $objLayout->head .= '<link rel="amphtml" href="' . $strUrl . '?amp" />';
+                $objLayout->head .= '<link rel="amphtml" href="' . $domain . '/' . $strUrl . '?amp" />';
             }
 
-            if(isset($_GET['amp']))
+            if(!is_null(\Input::get('amp')))
             {
                 $ampLayout = (int) \PageModel::findByPk($objPage->rootId)->ampLayout;
                 $ampUseInLayout = \PageModel::findByPk($objPage->rootId)->ampUseInLayout;
@@ -89,8 +90,9 @@ class AmphtmlHooks extends \Controller
                 {
                     $amphtmlCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/amphtml.css");
                 }
-                $objLayout->head = "<style amp-custom>".$amphtmlCss."</style>";
-                $objLayout->head .= '<link rel="canonical" href="'.str_replace('?amp', '', $strUrl).'" />';
+                $fontAwesomeCss = file_get_contents("http://".$_SERVER['HTTP_HOST']."/files/amphtml/fonts/font-awesome/css/font-awesome.min.css");
+                $objLayout->head = "<style amp-custom>".$amphtmlCss.$fontAwesomeCss."</style>";
+                $objLayout->head .= '<link rel="canonical" href="'.str_replace('?amp', '', $domain . '/' . $strUrl).'" />';
             }
         }
     }
@@ -100,7 +102,7 @@ class AmphtmlHooks extends \Controller
      */
     public function ampGenerateFrontendUrl($arrRow, $strParams, $strUrl)
     {
-        if(isset($_GET['amp']))
+        if(!is_null(\Input::get('amp')))
         {
             return $strUrl = $strUrl . '?amp';
         }
@@ -113,7 +115,7 @@ class AmphtmlHooks extends \Controller
      */
     public function unbindDynamicScriptTags($strBuffer)
     {
-        if(isset($_GET['amp']))
+        if(!is_null(\Input::get('amp')))
         {
             $search  = array('[[TL_HEAD]]', '[[TL_CSS]]');
             $replace = array('', '');
